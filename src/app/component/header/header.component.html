@@ -1,0 +1,18 @@
+<div class="container-fluid">
+ <div class="header"  style="direction: ltr;background-color:pink;">
+    <!-- <a href="#default" class="logo">CompanyLogo</a> -->
+    <!-- <img src="assets/adhm.png" alt="" srcset="" class="logo" CustomDirective="red"> -->
+
+    <div class="header-left">
+      <a class="active"[routerLink]="['/Home']" style="font-weight: bold;">home</a>
+      <a [routerLink]="['/Products']"style="font-weight: bold;">Product</a>
+      <a [routerLink]="['/AboutUs']"style="font-weight: bold;">About</a>
+      <a [routerLink]="['/users']"style="font-weight: bold;">users</a>
+      <a [routerLink]="['/user/lazy']"style="font-weight: bold;">lazy</a>
+      <a [routerLink]="['/track-front']"style="font-weight: bold;">Admin</a>
+      <a [routerLink]="['/usersreactive']"style="font-weight: bold;">usersreactive</a>
+      <a [routerLink]="['/Userlogin']" [hidden]="isuserlogined"style="font-weight: bold;">login</a>
+      <a [routerLink]="['/Userlogout']"[hidden]="!isuserlogined"style="font-weight: bold;">logout</a>
+    </div>
+  </div>
+  </div>

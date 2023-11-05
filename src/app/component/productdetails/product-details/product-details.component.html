@@ -1,0 +1,95 @@
+
+
+<h2>Product Details</h2>
+
+<div *ngIf="product" >
+    <div >
+  <p>Product ID: {{ productid }}</p>
+  <p>Product ID: {{product.name }}</p>
+  <!-- Display other product details here -->
+</div>
+
+<div class="row" >
+    <!-- <div class="col-4" *ngFor="let pro of ProductList" [class.bg-danger]="pro.quantity==2"> -->
+    <div class="col-4" >
+    <!-- <div class="col-4" *ngFor="let pro of Productsearch" [class.bg-danger]="pro.quantity==2" [routerLink]="['/ProductDetails',pro.id]"> -->
+      <div class="col-md-4">
+        <div class="card ca m-5" style="width: 25rem; border-color:white ;" >
+          <img src="{{product.PrdimgURL}}"  alt="" style="border-radius: 20px;">
+  
+          <div class="card ca-body" style="border-color: white;">
+            <div>
+              <ng-container [ngSwitch]="product.categoryID">
+                <ng-container *ngSwitchCase="1">Table</ng-container>
+                <ng-container *ngSwitchCase="2">Chair</ng-container>
+                <ng-container *ngSwitchCase="3">Tv</ng-container>
+              </ng-container>
+            </div>
+            <h5 class="card ca-title" style="border-color: whitesmoke;">name:{{product.name|iDS|uppercase}}</h5>
+            <h2> price:{{product.price|currency:'EGP':'symbol'}}</h2>
+              <ng-container *ngIf="product.quantity==0; else refquant  ">instock</ng-container>
+  
+              <ng-template #refquant>
+                <h2  
+                  >quantity:{{product.quantity}}</h2>
+              </ng-template>
+  
+              <p class="card ca-text" style="border-color: white;">Some quick example text to build on the card ca title and make up the bulk of the
+                card ca's content.</p>
+              <!-- <button type="button" class="btn btn-primary" style="width: 100px;" (click)="addcard(pro)" 
+                [disabled]="pro.quantity==0">buy</button>
+              <button type="button" class="btn btn-primary" style="width: 100px;" (click)="deletepro(pro)" 
+                [disabled]="pro.quantity==0">delete</button>
+              <button type="button" class="btn btn-primary" style="width: 100px;" (click)="updatapro(pro.id)" 
+                [disabled]="pro.quantity==0">updata</button> -->
+              <!-- <button type="button" class="btn btn-primary" (click)="toggleimg()"
+                [disabled]="pro.quantity==0">buy</button> -->
+                <!-- <button class="btn btn-secondary w-25 m-3 ms-0" name="btn" (click)="delPrd()">delete</button> -->
+
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+</div><div>
+  <!-- <button class="btn pag-btn btn-secondary" (click)="prevPrd()" > << previous </button>
+<button class="btn pag-btn btn-secondary" (click)="nextPrd()" > Next >> </button> -->
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="col-5 mx-auto">
+    <div> search with materail</div>
+    <div>
+        <input type="text" name="" id="" #inputValue>
+        <span>
+            <button type="button" (click)="searchbymaterial(inputValue.value)" >s</button>
+        </span>
+    </div>
+
+
+
+</div>

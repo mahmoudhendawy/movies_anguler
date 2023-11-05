@@ -1,0 +1,36 @@
+<!-- <button (click)="addnewuser()">add</button> -->
+
+
+<form (ngSubmit)="addnewuser()" #signupform="ngForm" style="margin-left:200px; width: 70%; background-color: #008b8b;border-radius: 20px;" >
+  <div class="m-5"><h1  style="margin-left: 300px;color: rgba(98, 233, 35, 0.742); ">login</h1>
+  </div>
+   
+    <div class="mb-3" style="width: 70%; margin: 60px;">
+      <label for="fname" class="form-label" style="font-weight: bold;color: aquamarine;">First Name</label>
+      <input type="text" required minlength="3" class="form-control" name="fname" id="fname" [(ngModel)]="user.fname" #fnameInput="ngModel" [ngClass]="{'is-invalid':(fnameInput.touched||fnameInput.dirty)&&fnameInput.invalid}">
+      <span class="invalid-feedback">
+     <span *ngIf="fnameInput.errors?.['required']">
+        please enter fname
+     </span>
+     <span *ngIf="fnameInput.errors?.['minlength']">
+        please enter 3
+     </span>
+      </span>
+    </div>
+    <div class="mb-3 form-text"  style="width: 70%; margin: 60px;">
+      <label class="form-label" for="lname"  style="font-weight: bold;color: aquamarine;"> lest Name </label>
+
+      <input type="text" class="form-control" id="lname" name="lname" [(ngModel)]="user.lname" required>
+    </div>
+    <div class="mb-3"  style="width: 70%; margin: 60px;">
+      <label for="exampleInputEmail1" class="form-label"  style="font-weight: bold;color: aquamarine;">Email address</label>
+      <input type="email"name="email"  [(ngModel)]="user.email" class="form-control" required email id="exampleInputEmail1" aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <button type="submit" style="width: 30%; margin: 60px;" class="btn btn-primary" [disabled]="signupform.invalid">Submit</button>
+  </form>
+  <h2>{{user|json}}</h2>
+  <h2>{{fnameInput.valid|json}}</h2>
+  <h2>{{fnameInput.touched|json}}</h2>
+  <h2>{{fnameInput.dirty|json}}</h2>
+  <h2>{{fnameInput.errors|json}}</h2>

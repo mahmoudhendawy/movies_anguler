@@ -1,0 +1,36 @@
+
+    <form (ngSubmit)="addnewproduct()"style="margin-left:200px; width: 70%; background-color: #008b8b;border-radius: 20px;">
+       
+      <div class="m-5"><h1  style="margin-left: 300px;color: rgba(98, 233, 35, 0.742); ">New Product</h1>
+      </div> 
+      
+      
+      <div class="mb-3"style="width: 70%; margin: 60px;">
+          <label for="exampleInputEmail1" class="form-label" style="font-weight: bold;color: aquamarine;">categoryID</label>
+          <input type="text"name="categoryID"  class="form-control" [(ngModel)]="newpro.categoryID" required  id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3"style="width: 70%; margin: 60px;">
+          <label for="name" class="form-label" style="font-weight: bold;color: aquamarine;">nameProduct</label>
+          <input type="text" required minlength="3" class="form-control" name="name" id="name"  [(ngModel)]="newpro.name"  >
+         
+        </div>
+        <div class="mb-3 " style="width: 70%; margin: 60px;">
+          <label class="form-label" for="Material" style="font-weight: bold;color: aquamarine;" > Material </label>
+
+          <input type="text" class="form-control" id="Material" name="Material" required  [(ngModel)]="newpro.Material">
+        </div>
+        <div class="mb-3 "style="width: 70%; margin: 60px;">
+          <label class="form-labal" for="price"style="font-weight: bold;color: aquamarine;" > price </label>
+
+          <input type="number" class="form-control" id="price" name="price" required  [(ngModel)]="newpro.price">
+        </div>
+        <div class="mb-3 form" style="width: 70%; margin: 60px;">
+          <label class="form-label" for="quantity" style="font-weight: bold;color: aquamarine;" > quantity </label>
+
+          <input type="text" class="form-control" id="quantity" name="quantity" required  [(ngModel)]="newpro.quantity">
+        </div>
+        <button type="submit" class="btn btn-danger"  style="width: 30%; margin: 60px;"
+        >Add product</button>
+      </form>
+    
+      <h2>{{newpro|json}}</h2>

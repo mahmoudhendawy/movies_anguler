@@ -1,0 +1,39 @@
+<!-- <p>parent works!</p> -->
+<div class="col-12">
+    <label for="cars">Choose a car:</label>
+
+    <select name="cars" id="cars" [(ngModel)]="searchp">
+        <option value="1">table</option>
+        <option value="2">chair</option>
+        <option value="3">tv</option>
+        <option value="1&&2&&3">all</option>
+    </select>
+</div>
+
+<app-Prodect [searchpro]="searchp" (onaddcerd)="addcard($event)"></app-Prodect>
+<div>
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+
+                <th>#</th>
+                <th>name</th>
+                <th>price</th>
+                <th>quantity</th>
+                <th>total</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let item of card" >
+            <tr>
+                <th scope="row">{{item.id}}</th>
+                <td> {{item.name}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.quantity}}</td>
+                <td>{{item.price * item.quantity}}</td>
+
+
+
+            </tr>
+        </tbody>
+    </table>
+</div>

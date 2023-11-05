@@ -1,0 +1,49 @@
+<img src="{{store.Logo}}"  (click)="toggleimg()" alt="" *ngIf="flag; else ref">
+<ng-template #ref>
+  <h2>thank you</h2>
+  <h2>{{date|date:'longDate'}}</h2>
+</ng-template>
+
+<div class="row" >
+
+  <div class="col-4" *ngFor="let pro of Productsearch">
+  
+    <div class="col-md-4" >
+      <div class="card ca m-5" style="width: 25rem; border-color:white ;" (click)="prodetails(pro.id)">
+        <img src="{{pro.PrdimgURL}}"  alt="" style="border-radius: 20px;"  >
+
+        <div class="card ca-body" style="border-color: white;">
+          <div>
+            <ng-container [ngSwitch]="pro.categoryID">
+              <ng-container *ngSwitchCase="1">Table</ng-container>
+              <ng-container *ngSwitchCase="2">Chair</ng-container>
+              <ng-container *ngSwitchCase="3">Tv</ng-container>
+            </ng-container>
+          </div>
+          <h5 class="card ca-title" style="border-color: whitesmoke;">name:{{pro.name|iDS|uppercase}}</h5>
+          <h2> price:{{pro.price|currency:'EGP':'symbol'}}</h2>
+            <ng-container *ngIf="pro.quantity==0; else refquant  ">instock</ng-container>
+
+            <ng-template #refquant>
+              <h2  
+                >quantity:{{pro.quantity}}</h2>
+            </ng-template>
+
+            <p class="card ca-text" style="border-color: white;">Some quick example text to build on the card ca title and make up the bulk of the
+              card ca's content.</p>
+              <div style="flex-direction: row;">
+            <button type="button" class="btn btn-primary" style="width: 100px; margin:10px;" (click)="addcard(pro)" 
+              [disabled]="pro.quantity==0">buy</button>
+        
+            
+            </div>
+        </div>
+      </div>
+      <div class="d-flex  w-50" style="flex-direction: row; padding-left: 40px;" >
+        <button class="btn btn-warning  mx-3 my-1 edit"  routerLink="/track-front/{{pro.id}}"> edit </button>
+        <button class="btn btn-info mx-3 my-1 del" (click)="deletepro(pro.id)"  > Del </button>
+    </div>
+    </div>
+   
+  </div>
+</div>

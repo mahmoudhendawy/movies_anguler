@@ -1,0 +1,59 @@
+<!-- <form (ngSubmit)="addnewuser()" #signupform="ngForm"> -->
+<form [formGroup]="userForm"  style="justify-content: center; border-radius: 20px; margin: 50px;">
+    <!-- <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="email"name="email"  formControlName="email" class="form-control" required email id="exampleInputEmail1" aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div> -->
+    <div class="mb-3">
+      <label for="fname" class="form-label">fname  :-</label>
+      <input type="text" required minlength="3" name="fname" id="fname" formControlName="fname"  [ngClass]="{'is-invalid':(fname?.touched||userForm.get('fname')?.dirty)&& userForm.get('fname')?.invalid}" >
+      <span class="invalid-feedback">
+     <span *ngIf="fname?.errors?.['required']">
+        please enter fname
+     </span>
+     <span *ngIf="fname?.errors?.['minlength']">
+        please enter 3
+     </span>
+      </span>
+    </div>
+    <!-- <div class="mb-3 form-text">
+      <input type="text" class="form-text" id="fname" name="fname" required formControlName="fname">
+      <label class="form-label" for="fname" > fname </label>
+    </div> -->
+    <div class="mb-3 form-text">
+      <label class="form-label" for="lname" > lname  :- </label>
+
+      <input type="text" class="form-text" id="lname" name="lname" required formControlName="lname"  [ngClass]="{'is-invalid':(lname?.touched||userForm.get('lname')?.dirty)&& userForm.get('lname')?.invalid}">
+      <span class="invalid-feedback">
+        <span *ngIf="lname?.errors?.['required']">
+           please enter lname
+        </span>
+        <span *ngIf="lname?.errors?.['minlength']">
+           please enter 3
+        </span>
+         </span>
+    </div>
+    <div class="mb-3 form-text">   
+         <label class="form-label" for="email" > email :- </label>
+
+
+      <input type="text" class="form-text" id="email" name="email" required formControlName="email"  [ngClass]="{'is-invalid':(email?.touched||userForm.get('email')?.dirty)&& userForm.get('email')?.invalid}">
+      <span class="invalid-feedback">
+        <span *ngIf="email?.errors?.['required']">
+           please enter email
+        </span>
+        <span *ngIf="email?.errors?.['minlength']">
+           please enter 3
+        </span>
+         </span>
+    </div>
+    <button type="submit" class="btn btn-primary" 
+    >Submit</button>
+  </form>
+
+
+  <h1>{{userForm.value|json}}</h1>
+  <h1>{{fname?.errors|json}}</h1>
+  <h1>{{lname?.errors|json}}</h1>
+  <h1>{{email?.errors|json}}</h1>
